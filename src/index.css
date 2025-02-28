@@ -1,0 +1,163 @@
+@import "tailwindcss";
+
+@theme {
+  --color-blue: #2997FF;
+  --color-gray: #86868b;
+  --color-gray-100: #94928d;
+  --color-gray-200: #afafaf;
+  --color-gray-300: #42424570;
+  --color-zinc: #101010;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  color: white;
+  width: 100dvw;
+  overflow-x: hidden;
+  height: 100%;
+  background: #000;
+  border-color: #3b3b3b;
+  user-select: none;
+}
+
+canvas {
+  touch-action: none;
+}
+
+.scrim-max-width {
+  margin-inline-start: auto;
+  margin-inline-end: auto;
+  position: relative;
+  max-width: 1120px;
+}
+
+
+@layer utilities {
+  .flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nav-height {
+    height: calc(100vh - 60px);
+  }
+
+  .btn {
+    padding: 0.5rem 1.25rem;
+    border-radius: 1.5rem;
+    background-color: var(--color-blue);
+    margin: 1.25rem 0;
+    border: 1px solid transparent;
+    transition: all 0.3s;
+  }
+
+  .btn:hover {
+    background-color: transparent;
+    color: var(--color-blue);
+    border-color: var(--color-blue);
+  }
+
+  .color-container,
+  .size-btn-container,
+  .control-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-gray-300);
+    backdrop-filter: blur(10px);
+    border-radius: 9999px;
+    padding: 1rem;
+  }
+
+  .size-btn {
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 0.875rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    color: black;
+    border-radius: 9999px;
+    transition: all 0.3s;
+  }
+
+  .common-padding {
+    padding: 5rem 2.5rem;
+  }
+
+  .section-heading {
+    color: var(--color-gray);
+    font-size: 3rem;
+    font-weight: 500;
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  .feature-text {
+    color: var(--color-gray);
+    max-width: 28rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+    opacity: 0;
+    transform: translateY(100px);
+  }
+
+  .link {
+    color: var(--color-blue);
+    font-size: 1.25rem;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  .link:hover {
+    text-decoration: underline;
+  }
+
+  .hero-title {
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.875rem;
+    color: var(--color-gray-100);
+    opacity: 0;
+  }
+
+  .hiw-title {
+    text-align: center;
+    font-size: 4rem;
+    font-weight: 600;
+  }
+
+  .hiw-subtitle {
+    color: var(--color-gray);
+    font-weight: 600;
+    font-size: 1.25rem;
+    padding: 2.5rem 0;
+    text-align: center;
+  }
+
+  .hiw-bigtext {
+    color: white;
+    font-size: 2rem;
+    font-weight: 600;
+    margin: 0.5rem 0;
+  }
+
+  .video-carousel_container {
+    position: relative;
+    width: 88vw;
+    height: 35vh;
+  }
+
+  .g_fadeIn {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+}
