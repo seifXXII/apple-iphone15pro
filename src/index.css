@@ -7,12 +7,7 @@
   --color-gray-200: #afafaf;
   --color-gray-300: #42424570;
   --color-zinc: #101010;
-}
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+} 
 
 body {
   color: white;
