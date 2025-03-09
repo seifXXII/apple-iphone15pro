@@ -1,47 +1,61 @@
 import { useGSAP } from "@gsap/react";
-import React, { useRef, useState } from "react";
 import gsap from "gsap";
 import ModelView from "./ModelView";
+import { useEffect, useRef, useState } from "react";
 import { yellowImg } from "../utils";
+
 import * as THREE from "three";
-import { label, positionGeometry } from "three/tsl";
 import { Canvas } from "@react-three/fiber";
 import { View } from "@react-three/drei";
 import { models, sizes } from "../constants";
-import Iphone from "./Iphone";
-
+import { animateWithGsapTimeline } from "../utils/animations";
 
 const Model = () => {
   const [size, setSize] = useState("small");
   const [model, setModel] = useState({
     title: "iPhone 15 Pro in Natural Titanium",
-    color: ["#8f8a81", "#ffe7b9", "#6f6c64"],
+    color: ["#8F8A81", "#FFE7B9", "#6F6C64"],
     img: yellowImg,
   });
 
-  ///camera control
+  // camera control for the model view
   const cameraControlSmall = useRef();
   const cameraControlLarge = useRef();
 
-  //models
+  // model
   const small = useRef(new THREE.Group());
   const large = useRef(new THREE.Group());
 
-  //rotation
+  // rotation
   const [smallRotation, setSmallRotation] = useState(0);
   const [largeRotation, setLargeRotation] = useState(0);
 
+  const tl = gsap.timeline();
+
+  useEffect(() => {
+    if (size === "large") {
+      animateWithGsapTimeline(tl, small, smallRotation, "#view1", "#view2", {
+        transform: "translateX(-100%)",
+        duration: 2,
+      });
+    }
+
+    if (size === "small") {
+      animateWithGsapTimeline(tl, large, largeRotation, "#view2", "#view1", {
+        transform: "translateX(0)",
+        duration: 2,
+      });
+    }
+  }, [size]);
+
   useGSAP(() => {
-    gsap.to("#heading", {
-      y: 0,
-      opacity: 1,
-    });
+    gsap.to("#heading", { y: 0, opacity: 1 });
   }, []);
 
   return (
     <section className="common-padding">
       <div className="screen-max-width">
-        <h1 className="section-heading" id="heading">
+        <h1 id="heading" className="section-heading">
           Take a closer look.
         </h1>
 
@@ -56,6 +70,7 @@ const Model = () => {
               item={model}
               size={size}
             />
+
             <ModelView
               index={2}
               groupRef={large}
@@ -65,7 +80,8 @@ const Model = () => {
               item={model}
               size={size}
             />
-            <canvas
+
+            <Canvas
               className="w-full h-full"
               style={{
                 position: "fixed",
@@ -78,24 +94,24 @@ const Model = () => {
               eventSource={document.getElementById("root")}
             >
               <View.Port />
-            </canvas>
+            </Canvas>
           </div>
 
           <div className="mx-auto w-full">
-            <p className="test-sm font-light text-center mb-5">{model.title}</p>
+            <p className="text-sm font-light text-center mb-5">{model.title}</p>
+
             <div className="flex-center">
               <ul className="color-container">
                 {models.map((item, i) => (
                   <li
                     key={i}
                     className="w-6 h-6 rounded-full mx-2 cursor-pointer"
-                    style={{
-                      backgroundColor: item.color[0],
-                    }}
+                    style={{ backgroundColor: item.color[0] }}
                     onClick={() => setModel(item)}
                   />
                 ))}
               </ul>
+
               <button className="size-btn-container">
                 {sizes.map(({ label, value }) => (
                   <span

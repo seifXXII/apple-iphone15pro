@@ -1,7 +1,7 @@
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { heroVideo, smallHeroVideo } from "../utils";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const Hero = () => {
   const [videoSrc, setVideoSrc] = useState(
@@ -18,21 +18,15 @@ const Hero = () => {
 
   useEffect(() => {
     window.addEventListener("resize", handleVideoSrcSet);
+
     return () => {
       window.removeEventListener("resize", handleVideoSrcSet);
     };
   }, []);
 
   useGSAP(() => {
-    gsap.to("#hero", {
-      opacity: 1,
-      delay: 1.5,
-    })
-    gsap.to("#hta", {
-      opacity:1,
-      delay:1.7,
-      y:-50,
-    })
+    gsap.to("#hero", { opacity: 1, delay: 1.5 });
+    gsap.to("#cta", { opacity: 1, y: -50, delay: 1.7 });
   }, []);
 
   return (
@@ -46,7 +40,7 @@ const Hero = () => {
             className="pointer-events-none"
             autoPlay
             muted
-            playsInline
+            playsInline={true}
             key={videoSrc}
           >
             <source src={videoSrc} type="video/mp4" />
@@ -54,10 +48,13 @@ const Hero = () => {
         </div>
       </div>
 
-
-      <div id="hta"
-      className="flex flex-col items-center opacity-0 translate-y-20">
-        <a href="#highlights" className="btn">Buy</a>
+      <div
+        id="cta"
+        className="flex flex-col items-center opacity-0 translate-y-20"
+      >
+        <a href="#highlights" className="btn">
+          Buy
+        </a>
         <p className="font-normal text-xl">From 199$/month or 999$</p>
       </div>
     </section>
