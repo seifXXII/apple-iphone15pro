@@ -1,13 +1,13 @@
 @import "tailwindcss";
 
-@theme {
+:root {
   --color-blue: #2997FF;
   --color-gray: #86868b;
   --color-gray-100: #94928d;
   --color-gray-200: #afafaf;
   --color-gray-300: #42424570;
   --color-zinc: #101010;
-} 
+}
 
 body {
   color: white;
@@ -146,27 +146,49 @@ canvas {
     opacity: 0;
   }
 
-  .hiw-title {
-    text-align: center;
-    font-size: 4rem;
-    font-weight: 600;
-  }
+.hiw-title {
+  text-align: center;
+  font-size: 4rem;
+  font-weight: 600;
+}
 
-  .hiw-subtitle {
-    color: var(--color-gray);
-    font-weight: 600;
-    font-size: 1.25rem;
-    padding: 2.5rem 0;
-    text-align: center;
-  }
+.hiw-subtitle {
+  color: var(--color-gray);
+  font-weight: 600;
+  font-size: 1.25rem;
+  padding: 2.5rem 0;
+  text-align: center;
+}
 
-  .hiw-bigtext {
-    color: white;
-    font-size: 2rem;
-    font-weight: 600;
-    margin: 0.5rem 0;
-  }
+.hiw-video {
+  position: absolute;
+  width: 95%;
+  height: 90%;
+  border-radius: 56px;
+  overflow: hidden;
+}
 
+.hiw-text-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 6rem;
+  margin-left: 10%;
+}
+
+.hiw-text {
+  color: var(--color-gray);
+  font-size: 1.25rem;
+  font-weight: normal;
+}
+
+.hiw-bigtext {
+  color: white;
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 0.5rem 0;
+}
   .video-carousel_container {
     position: relative;
     width: 88vw;
